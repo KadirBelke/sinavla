@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190428103214) do
+ActiveRecord::Schema.define(version: 20190501130725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classic_questions", force: :cascade do |t|
+    t.string "question"
+    t.string "true_answer"
+    t.integer "kind"
+    t.integer "difficulty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "lesson_id"
+    t.bigint "user_id"
+    t.index ["lesson_id"], name: "index_classic_questions_on_lesson_id"
+    t.index ["user_id"], name: "index_classic_questions_on_user_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "test_questions", force: :cascade do |t|
+    t.text "question"
+    t.string "true_answer"
+    t.string "wrong"
+    t.string "wrong2"
+    t.string "wrong3"
+    t.string "wrong4"
+    t.integer "kind"
+    t.integer "difficulty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "note"
+    t.bigint "lesson_id"
+    t.bigint "user_id"
+    t.index ["lesson_id"], name: "index_test_questions_on_lesson_id"
+    t.index ["user_id"], name: "index_test_questions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +64,8 @@ ActiveRecord::Schema.define(version: 20190428103214) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "classic_questions", "lessons"
+  add_foreign_key "classic_questions", "users"
+  add_foreign_key "test_questions", "lessons"
+  add_foreign_key "test_questions", "users"
 end

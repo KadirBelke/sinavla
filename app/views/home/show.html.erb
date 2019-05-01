@@ -1,0 +1,46 @@
+<table style="float:left">
+  <tr>
+    <td>Soru</td>
+    <td>Doğru Cevap</td>
+    <td>Yanlış Cevap</td>
+    <td>Yanlış Cevap</td>
+    <td>Yanlış Cevap</td>
+    <td>Yanlış Cevap</td>
+    <td>Zorluk</td>
+    <td>Tür</td>
+    <td>Ders</td>
+    <td>Aksiyonlar</td>
+  </tr>
+  <% @test_questions.each do |question| %>
+    <tr>
+      <td><%= question.question %></td>
+      <td><%= question.true_answer %></td>
+      <td><%= question.wrong %></td>
+      <td><%= question.wrong2 %></td>
+      <td><%= question.wrong3 %></td>
+      <td><%= question.wrong4 %></td>
+      <td><%= question.difficulty %></td>
+      <td><%= question.kind %></td>
+      <td><%= question.lesson.name %></td>
+      <td><%= link_to :Düzenle, edit_test_path(question) %> <%= link_to :Sil, test_path(question), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<table style="float:left">
+  <tr>
+    <td>Soru</td>
+    <td>Doğru Cevap</td>
+    <td>Zorluk</td>
+    <td>Tür</td>
+    <td>Ders</td>
+  </tr>
+  <% @classic_questions.each do |question| %>
+    <tr>
+      <td><%= question.question %></td>
+      <td><%= question.true_answer %></td>
+      <td><%= question.difficulty %></td>
+      <td><%= question.kind %></td>
+      <td><%= question.lesson.name %></td>
+    </tr>
+  <% end %>
+</table>

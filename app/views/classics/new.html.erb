@@ -1,0 +1,21 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+
+<%= form_for(@question, url: classics_path(@question)) do |f| %>
+  Soru:
+  <%= f.text_field :question %><br>
+  Dogru Cevap:
+  <%= f.text_field :true_answer %><br>
+
+  Sınav Türü:
+  <%= f.select(:kind, ClassicQuestion.kinds.keys.map {|kind| [kind.titleize, kind]}) %><br>
+
+  Zorluk:
+  <%= f.select(:difficulty, ClassicQuestion.difficulties.keys.map {|difficulty| [difficulty.titleize, difficulty]}) %><br>
+
+  Ders:
+  <%= f.collection_select(:lesson_id, @lessons, :id, :name) %><br>
+
+  <%= f.submit "Ekle", class:"button"%>
+<% end %>
