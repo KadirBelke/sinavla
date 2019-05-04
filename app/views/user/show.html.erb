@@ -1,11 +1,13 @@
 <table>
   <tr>
     <td>adı</td>
+    <td>Yetki</td>
 
   </tr>
   <% @users.each do |user| %>
     <tr>
       <td><%= user.email %></td>
 
+      <td><%= (user.is_admin) ? (link_to 'Kullanıcı Yap',user_update_path(user)) : (link_to 'Admin Yap',user_update_path(user)) %></td>
   <% end %>
 </table>
