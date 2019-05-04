@@ -2,7 +2,7 @@
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
 
-<%= form_for(@question, url: classics_path(@question)) do |f| %>
+<%= form_for(@question) do |f| %>
   Soru:
   <%= f.text_field :question %><br>
   Dogru Cevap:

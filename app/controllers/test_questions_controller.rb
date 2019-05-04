@@ -1,4 +1,6 @@
-class TestsController < ApplicationController
+class TestQuestionsController < ApplicationController
+  before_action :set_test_question, only: [:update, :edit, :destroy]
+  before_action :authenticate_user!
   def new
     @question = TestQuestion.new
     @lessons  = Lesson.all
@@ -9,7 +11,7 @@ class TestsController < ApplicationController
     @question.user = current_user
     if @question.save!
       flash[:succes] = "Soru Eklendi..."
-      redirect_to new_test_path
+      redirect_to new_test_question_path
     else
       flash[:succes] = "Soru Eklenemedi..."
       render :new
@@ -17,12 +19,10 @@ class TestsController < ApplicationController
   end
 
   def edit
-    @question = TestQuestion.find(params[:id])
     @lessons = Lesson.all
   end
 
   def update
-    @question = TestQuestion.find(params[:id])
     if @question.update(strong_params)
       flash[:succes] = "Soru Güncelledi..."
       redirect_to questions_path
@@ -32,8 +32,17 @@ class TestsController < ApplicationController
     end
   end
 
+  def destroy
+    @question.delete
+    redirect_to questions_path
+  end
+
   private
   def strong_params
     params.require("test_question").permit(:question, :true_answer, :wrong, :wrong2, :wrong3, :wrong4, :kind, :difficulty, :lesson_id)
+  end
+
+  def set_test_question
+    @question = TestQuestion.find(params[:id])
   end
 end
