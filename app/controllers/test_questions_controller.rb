@@ -9,6 +9,7 @@ class TestQuestionsController < ApplicationController
   def create
     @question = TestQuestion.new(strong_params)
     @question.user = current_user
+
     if @question.save!
       flash[:succes] = "Soru Eklendi..."
       redirect_to new_test_question_path
@@ -39,7 +40,7 @@ class TestQuestionsController < ApplicationController
 
   private
   def strong_params
-    params.require("test_question").permit(:question, :true_answer, :wrong, :wrong2, :wrong3, :wrong4, :kind, :difficulty, :lesson_id)
+    params.require("test_question").permit(:question, :true_answer, :wrong, :wrong2, :wrong3, :wrong4, :kind, :difficulty, :lesson_id, :image)
   end
 
   def set_test_question

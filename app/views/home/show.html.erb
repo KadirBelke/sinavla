@@ -9,6 +9,7 @@
     <td>Zorluk</td>
     <td>Tür</td>
     <td>Ders</td>
+    <td>Resim</td>
     <td>Aksiyonlar</td>
   </tr>
   <% @test_questions.each do |question| %>
@@ -22,6 +23,7 @@
       <td><%= question.difficulty %></td>
       <td><%= question.kind %></td>
       <td><%= question.lesson.name %></td>
+      <td><%= image_tag(question.image, width: 200, height: 100) if question.image.attached? %></td>
       <td><%= link_to :Düzenle, edit_test_question_path(question) %> <%= link_to :Sil, test_question_path(question), method: :delete %></td>
     </tr>
   <% end %>
@@ -33,6 +35,7 @@
     <td>Zorluk</td>
     <td>Tür</td>
     <td>Ders</td>
+    <td>Resim</td>
     <td>Aksiyonlar</td>
   </tr>
   <% @classic_questions.each do |question| %>
@@ -42,6 +45,7 @@
       <td><%= question.difficulty %></td>
       <td><%= question.kind %></td>
       <td><%= question.lesson.name %></td>
+      <td><%= image_tag(question.image, width: 200, height: 100) if question.image.attached? %></td>
       <td><%= link_to :Düzenle, edit_classic_question_path(question) %> <%= link_to :Sil, classic_question_path(question), method: :delete %></td>
     </tr>
   <% end %>

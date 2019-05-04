@@ -9,6 +9,7 @@ class ClassicQuestionsController < ApplicationController
   def create
     @question = ClassicQuestion.new(strong_params)
     @question.user = current_user
+
     if @question.save!
       flash[:succes] = "Soru Eklendi..."
       redirect_to new_classic_question_path
@@ -39,7 +40,7 @@ class ClassicQuestionsController < ApplicationController
 
   private
   def strong_params
-    params.require("classic_question").permit(:question, :true_answer, :kind, :difficulty, :lesson_id)
+    params.require("classic_question").permit(:question, :true_answer, :kind, :difficulty, :lesson_id, :image)
   end
 
   def set_classsic_question

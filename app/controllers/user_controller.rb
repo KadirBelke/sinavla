@@ -17,7 +17,7 @@ class UserController < ApplicationController
   private
 
   def admin_mi!
-    flash[:danger] = "Bu sayfaya Erişemezsin..."
     redirect_to(root_path) unless current_user.is_admin
+    flash[:danger] = "Bu sayfaya Erişemezsin..."
   end
 end

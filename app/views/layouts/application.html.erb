@@ -10,23 +10,23 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Sinavla</a>
+      <%= link_to 'Sinavla', home_path, class: 'navbar-brand' %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Anasayfa<span class="sr-only">(current)</span></a>
+            <%= link_to 'Anasayfa', home_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Test Sorusu Ekle</a>
+            <%= link_to 'Test Sorusu Ekle', new_test_question_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Klasik Soru Ekle</a>
+            <%= link_to 'Klasik Soru Ekle', new_classic_question_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Soru Düzenle</a>
+            <%= link_to 'Soru Düzenle', questions_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Sınav Hazırla</a>

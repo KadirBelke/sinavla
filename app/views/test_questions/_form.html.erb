@@ -25,5 +25,7 @@
   Ders:
   <%= f.collection_select(:lesson_id, @lessons, :id, :name) %><br>
 
+  <%= f.file_field :image %><br>
+
   <%= f.submit "Ekle", class:"button"%>
 <% end %>
