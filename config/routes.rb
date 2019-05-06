@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :classic_questions
   get "/users/list", to: "user#show"
   get '/users/update/:id', to: 'user#update', as: 'user_update'
+  get "/lessons/list", to: "lessons#show"
+  resources :lessons
 
 end

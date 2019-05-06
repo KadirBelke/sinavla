@@ -4,7 +4,7 @@
     <title>Sinavla</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag    'application'%>
     <%= javascript_include_tag 'application' %>
   </head>
 
@@ -33,6 +33,12 @@
           </li>
           <li class="nav-item">
             <%= link_to 'Kullanıcı Düzenle', users_list_path, class: 'nav-link' if current_user.is_admin %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Ders Ekle', new_lesson_path, class: 'nav-link' if current_user.is_admin %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Ders Düzenle', lessons_list_path, class: 'nav-link' if current_user.is_admin %>
           </li>
           <li class="nav-item">
             <%= link_to "Çıkış Yap", destroy_user_session_path,method: :delete, class: 'nav-link' %>

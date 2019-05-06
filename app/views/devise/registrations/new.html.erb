@@ -1,26 +1,28 @@
+<head>
+
+  <link href="/stylesheets/application.scss" media="all" rel="stylesheet" type="text/css" />
+  <%= javascript_include_tag 'application' %>
+</head>
 <body id="LoginForm">
 <div class="container">
   <div class="login-form">
     <div class="main-div">
       <div class="panel">
-        <h2>Admin Login</h2>
-        <p>Please enter your email and password</p>
+        <h2>Kayıt Formu</h2>
+        <p>Lütfen email adresinizi ve parolanızı giriniz</p>
       </div>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name),id:'Login') do |f| %>
         <div class="form-group">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control", id:"inputEmail",placeholder:"Email Address" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:"form-control", id:"inputEmail",placeholder:"Email" %>
         </div>
         <div class="form-group">
-          <%= f.password_field :password, autocomplete: "new-password",class:"form-control" ,id:"inputPassword", placeholder:"Password"  %>
+          <%= f.password_field :password, autocomplete: "new-password",class:"form-control" ,id:"inputPassword", placeholder:"Parola"  %>
         </div>
         <div class="form-group">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" ,id:"inputPassword", placeholder:"Password"  %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" ,id:"inputPassword", placeholder:"Parola"  %>
         </div>
-        <div class="forgot">
-          <a href="reset.html">Forgot password?</a>
-        </div>
-        <%= f.submit "Log in", class:"button"%>
+        <%= f.submit "Kaydol", class:"btn btn-primary"%>
         <%end %>
 
     </div>

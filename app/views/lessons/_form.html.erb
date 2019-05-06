@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+
+    <link href="/stylesheets/test.scss" media="all" rel="stylesheet" type="text/css" />
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
+    <div class="tcontainer">
+      <%= form_for(@lesson) do |f| %>
+        <div class="row">
+          <div class="col-25">
+            <label >Ders Adı</label>
+          </div>
+          <div class="col-75">
+            <%= f.text_field :name %>
+          </div>
+        </div>
+        <div class="row">
+          <%= f.submit "Ekle", class:"button"%>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</htlm>

@@ -1,0 +1,12 @@
+<table style="float:left">
+  <tr>
+    <td>Adı</td>
+    <td>Aksiyonlar</td>
+  </tr>
+  <% @lesson.each do |lesson| %>
+    <tr>
+      <td><%= lesson.name %></td>
+      <td><%= link_to :Düzenle, edit_lesson_path(lesson) %> <%= link_to :Sil, lesson_path(lesson), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>

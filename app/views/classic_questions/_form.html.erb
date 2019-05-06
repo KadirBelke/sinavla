@@ -1,23 +1,73 @@
-<% flash.each do |key, value| %>
-  <%= content_tag :div, value, class: "flash #{key}" %>
-<% end %>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
 
-<%= form_for(@question) do |f| %>
-  Soru:
-  <%= f.text_field :question %><br>
-  Dogru Cevap:
-  <%= f.text_field :true_answer %><br>
+    <link href="/stylesheets/test.scss" media="all" rel="stylesheet" type="text/css" />
+    <%= javascript_include_tag 'application' %>
+  </head>
 
-  Sınav Türü:
-  <%= f.select(:kind, ClassicQuestion.kinds.keys.map {|kind| [kind.titleize, kind]}) %><br>
+  <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
+    <div class="tcontainer">
+      <%= form_for(@question) do |f| %>
+        <div class="row">
+          <div class="col-25">
+            <label >Soru</label>
+          </div>
+          <div class="col-75">
+            <%= f.text_field :question %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label >Doğru Cevap</label>
+          </div>
+          <div class="col-75">
+            <%= f.text_field :true_answer %>
+          </div>
+        </div>
 
-  Zorluk:
-  <%= f.select(:difficulty, ClassicQuestion.difficulties.keys.map {|difficulty| [difficulty.titleize, difficulty]}) %><br>
 
-  Ders:
-  <%= f.collection_select(:lesson_id, @lessons, :id, :name) %><br>
+        <div class="row">
+          <div class="col-25">
+            <label>Tür</label>
+          </div>
+          <div class="col-75">
+            <%= f.select(:kind, ClassicQuestion.kinds.keys.map {|kind| [kind.titleize, kind]}) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label>Zorluk</label>
+          </div>
+          <div class="col-75">
+            <%= f.select(:difficulty, ClassicQuestion.difficulties.keys.map {|difficulty| [difficulty.titleize, difficulty]}) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label>Ders</label>
+          </div>
+          <div class="col-75">
+            <%= f.collection_select(:lesson_id, @lessons, :id, :name) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label>Resim</label>
+          </div>
+          <div class="col-75">
+            <%= f.file_field :image %>
+          </div>
+        </div>
 
-  <%= f.file_field :image %><br>
 
-  <%= f.submit "Ekle", class:"button"%>
-<% end %>
+        <div class="row">
+          <%= f.submit "Ekle", class:"button"%>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</htlm>
