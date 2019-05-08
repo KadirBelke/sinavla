@@ -1,4 +1,1 @@
-Kaydet laaa
 
-
-Kaydetti LAa
