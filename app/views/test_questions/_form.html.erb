@@ -10,6 +10,7 @@
     <% flash.each do |key, value| %>
       <%= content_tag :div, value, class: "flash #{key}" %>
     <% end %>
+  
     <div class="tcontainer">
       <%= form_for(@question) do |f| %>
         <div class="row">

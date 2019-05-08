@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/users/update/:id', to: 'user#update', as: 'user_update'
   get "/lessons/list", to: "lessons#show"
   resources :lessons
+  resources :prepare_exams
+  post 'prepare_exams', to: "prepare_exams#create"
 
 end

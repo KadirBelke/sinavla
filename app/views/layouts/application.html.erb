@@ -29,7 +29,7 @@
             <%= link_to 'Soru Düzenle', questions_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sınav Hazırla</a>
+            <%= link_to 'Sınav Hazırla', new_prepare_exam_path, class: 'nav-link' %>
           </li>
           <li class="nav-item">
             <%= link_to 'Kullanıcı Düzenle', users_list_path, class: 'nav-link' if current_user.is_admin %>
@@ -46,7 +46,11 @@
         </ul>
       </div>
     </nav>
-
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
