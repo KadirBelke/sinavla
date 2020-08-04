@@ -4,7 +4,7 @@ lock "~> 3.14.1"
 set :application, "sinavla"
 set :repo_url, "git@github.com:KadirBelke/sinavla.git"
 
-set :deploy_to, "/home/deploy/#{fetch :application}"
+set :deploy_to, "/home/belkekadir/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
